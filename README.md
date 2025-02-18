@@ -1,76 +1,48 @@
-[繁體中文](./README_TW.md) | **简体中文** | [English](./README_EN.md)
-
 # Fabric-Bedrock-Miner
+A Fabric client mod to "mine" bedrock!
 
-帮你 "挖掘" 基岩的客户端 Fabric mod！
+This is a fork of [bunnyi116's fork](https://github.com/bunnyi116/fabric-bedrock-miner) of [LXYan2333's mod](https://github.com/LXYan2333/Fabric-Bedrock-Miner)
 
-# 说明
+I removed the hardcoded blacklist.
 
-该项目复刻自 [LXYan2333/Fabric-Bedrock-Miner](https://github.com/LXYan2333/Fabric-Bedrock-Miner) 进行修改
+<br>
 
-## 默认方块列表清单
+#### Block whitelist (break supported)
+- Bedrock
 
-#### 破坏方块白名单（支持破坏）
+#### Block to add command filters
+- Air
+- Replaceable blocks
 
-- 基岩
+### Command description
+- `/bedrockMiner` on/off
+- `/bedrockMiner disable` disable the mod (the mod will not continue to process after it is turned on)
+- `/bedrockMiner behavior floor add <floor>` add a floor to the blacklist.
+- `/bedrockMiner behavior floor remove <floor>` remove a floor from the blacklist.
+- `/bedrockMiner behavior block whitelist add <block>` add whitelist block list
+- `/bedrockMiner behavior block whitelist remove <block>` remove whitelist block list
+- `/bedrockMiner task add <x, y, z>` add a task
+- `/bedrockMiner task shortWait <bool>` short custom wait
+- `/bedrockMiner task clear` clear the task
+- `/bedrockMiner debug true` enables debug mode
+- `/bedrockMiner debug false` turn off debug mode
 
-#### 破坏方块黑名单 (不支持破坏)
-
-- 暂无
-
-#### 服务器方块黑名单（不支持破坏，无法通过指令更改，内置过滤器）
-
-- 屏障
-- 普通型命令方块
-- 连锁型命令方块
-- 循环型命令方块
-- 结构空位
-- 结构方块
-- 拼图方块
-
-#### 方块添加命令过滤器
-
-- 空气
-- 可替换方块
-
-## 客户端指命说明
-
-- `/bedrockMiner` 开启/关闭
-- `/bedrockMiner disable` 禁用模组（开启后模组将不会继续处理）
-- `/bedrockMiner behavior floor add <floor>` 添加层数黑名单列表
-- `/bedrockMiner behavior floor remove <floor>` 移除层数黑名单列表
-- `/bedrockMiner behavior block whitelist add <block>` 添加白名单方块列表
-- `/bedrockMiner behavior block whitelist remove <block>` 移除白名单方块列表
-- `/bedrockMiner task add <x, y, z>` 添加任务
-- `/bedrockMiner task shortWait <bool>` 短自定义等待
-- `/bedrockMiner task clear` 清理任务
-- `/bedrockMiner debug true` 开启调试模式
-- `/bedrockMiner debug false` 关闭调试模式
-
-# 视频教程
-
-https://www.youtube.com/watch?v=b8Y86yxjr_Y
-</br>
+# Showcase
+https://www.youtube.com/watch?v=b8Y86yxjr_Y  
 https://www.bilibili.com/video/BV1Fv411P7Vc
 
-# 使用方法
+# Usage
+Have the following items ready:
+1. Efficiency V diamond (or netherite) pickaxe
+2. Haste II beacon
+3. Pistons
+4. Redstone torches
+5. Slime blocks
 
-使用前需准备好如下物品：
+Right click bedrock **with an empty hand** to switch on/off.
 
-1. 效率 Ⅴ 钻石镐（下界合金也行）
-2. 急迫 Ⅱ 信标
-3. 一些活塞
-4. 一些红石火把
-5. 黏液块若干
+While the mod is enabled, left click bedrock to "mine" it.
 
-**空手**右键基岩启动此模组（注意要空手）
-
-启动后，左键基岩，模组会尝试自动破除基岩。
-
-再次空手右键基岩关闭此模组。
-
-如果本模组帮你节省了大量时间的话，请给个 Star 呗 QwQ。
-
-## Q群
-
-![群二维码](https://github.com/Bunnui/Fabric-Bedrock-Miner/assets/37466008/7f1c2bc7-876b-4d34-9534-c72a3b555a2a)
+# Compile
+1. Run `gradle build` in this directory
+2. See `build/libs/`
