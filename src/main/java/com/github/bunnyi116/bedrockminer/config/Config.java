@@ -1,18 +1,20 @@
 package com.github.bunnyi116.bedrockminer.config;
 
+import com.github.bunnyi116.bedrockminer.BedrockMiner;
+import com.github.bunnyi116.bedrockminer.Debug;
+import com.github.bunnyi116.bedrockminer.util.BlockUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Blocks;
-import com.github.bunnyi116.bedrockminer.Debug;
-import com.github.bunnyi116.bedrockminer.util.BlockUtils;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Config {
-    public static final File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "bedrockminer.json");
+    public static final File CONFIG_DIR = FabricLoader.getInstance().getConfigDir().toFile();
+    public static final File CONFIG_FILE = new File(CONFIG_DIR, BedrockMiner.MOD_ID + ".json");
     public static final Config INSTANCE = Config.load();
     public boolean disable = false;
     public boolean debug = false;
@@ -41,12 +43,12 @@ public class Config {
     public static Config load() {
         Config config = null;
         Gson gson = new Gson();
-        try (Reader reader = new FileReader(file)) {
+        try (Reader reader = new FileReader(CONFIG_FILE)) {
             config = gson.fromJson(reader, Config.class);
             Debug.alwaysWrite("已成功加载配置文件");
         } catch (Exception e) {
-            if (file.exists()) {
-                if (file.delete()) {
+            if (CONFIG_FILE.exists()) {
+                if (CONFIG_FILE.delete()) {
                     Debug.alwaysWrite("无法加载配置,已成功删除配置文件");
                 } else {
                     Debug.alwaysWrite("无法加载配置,删除配置文件失败");
@@ -65,7 +67,7 @@ public class Config {
 
     public static void save() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        try (FileWriter writer = new FileWriter(file)) {
+        try (FileWriter writer = new FileWriter(CONFIG_FILE)) {
             gson.toJson(INSTANCE, writer);
         } catch (IOException e) {
             Debug.alwaysWrite("无法保存配置文件");
